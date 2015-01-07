@@ -5,37 +5,55 @@
 
 <body>
 
+<style>
+label {color: #FF0000;}
+</style>
+
 <script>
 function validateName(firstName,lastName,age) {
 	var firstname = document.getElementById(firstName).value;
 	var lastname = document.getElementById(lastName).value;
 	var userage = parseInt(document.getElementById(age).value, 10);
+	var alerts = [];
 	
 	if (firstname == "") {
-		window.alert("Enter a first name");
+		alerts[alerts.length] = "Enter a first name";
+		document.getElementById('wrongFirst').innerHTML = '*';
+	} else {
+	document.getElementById('wrongFirst').innerHTML = '';
 	}
 	if (lastname == "") {
-		window.alert("Enter a last name");
+		alerts[alerts.length] = " Enter a last name";
+		document.getElementById('wrongLast').innerHTML = '*';
+	} else {
+	document.getElementById('wrongLast').innerHTML = '';
 	}
+	
 	if (isNaN(userage)) {
-   		window.alert("Age is not a number");
+		alerts[alerts.length] = " Age is not a number";
+		document.getElementById('wrongAge').innerHTML = '*';
 	} else if (userage < 18) {
-    	window.alert("Too young!");
+    	alerts[alerts.length] = " Too young!";
+    	document.getElementById('wrongAge').innerHTML = '*';
+	} else {
+	document.getElementById('wrongAge').innerHTML = '';
 	}
+	if (alerts.length > 0) {
+	window.alert(alerts);
+	}	
 }
-
 </script>
 
 
 <form>
 First name:<br>
-<input type="text" id="firstname">
+<input type="text" id="firstname"><label id="wrongFirst"></label>
 <br>
 Last name:<br>
-<input type="text" id="lastname">
+<input type="text" id="lastname"><label id="wrongLast"></label>
 <br>
 Age:<br>
-<input type="text" id="age">
+<input type="text" id="age"><label id="wrongAge"></label>
 <br><br>
 <input type=button onclick="validateName('firstname','lastname','age');" value="Submit">
 </form>
