@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<title> Form Validation </title> 
+<meta charset="utf-8">
+
+<body>
+
+<script>
+function validateName(firstName,lastName,age) {
+	var firstname = document.getElementById(firstName).value;
+	var lastname = document.getElementById(lastName).value;
+	var userage = parseInt(document.getElementById(age).value, 10);
+	
+	if (firstname == "") {
+		window.alert("Enter a first name");
+	}
+	if (lastname == "") {
+		window.alert("Enter a last name");
+	}
+	if (isNaN(userage)) {
+   		window.alert("Age is not a number");
+	} else if (userage < 18) {
+    	window.alert("Too young!");
+	}
+}
+
+</script>
+
+
+<form>
+First name:<br>
+<input type="text" id="firstname">
+<br>
+Last name:<br>
+<input type="text" id="lastname">
+<br>
+Age:<br>
+<input type="text" id="age">
+<br><br>
+<input type=button onclick="validateName('firstname','lastname','age');" value="Submit">
+</form>
